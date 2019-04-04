@@ -164,9 +164,14 @@ step5.onclick = function() {
 
     console.log(cStringArray);
     cStringArray.forEach(function (c) {
-        c = parseInt(c);
+        c = BigInt(c);
 
-        let a = BigInt(1);
+        for (let x = 0; x < d; x++) {
+            c = c * c;
+        }
+        console.log(c);
+
+
         a = BigInt(Math.pow(c, d));
         console.log(a, '===');
         let b = p * q;
