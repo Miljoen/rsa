@@ -17,13 +17,16 @@
   <form class="form">
     <div>
       <h4>For N calculate P & Q</h4>
-    <input class="inline-input" type="text" name="field1" placeholder="Fill in N" />
-    <input type="button" class="calc_pq inline-button" value="Calculate"/>
+      <input class="inline-input" type="text" name="field1" placeholder="Fill in N" />
+      <input type="button" class="calc-pq inline-button" value="Step 1"/>
+      <div><p class="p-and-q-result"></p></div>
     </div>
-    <h4>Or set P & Q to calculate N</h4>
-    <input type="text" name="field2" class="result_P" placeholder="Set P" />
-    <input type="text" name="field2" class="result_Q" placeholder="Set Q" />
-    <input  type="submit" class="calc_n" value="Calculate" />
+    <h4>Or set P & Q to calculate E</h4>
+    <input type="text" name="field2" class="result-P" placeholder="Set P" />
+    <input type="text" name="field2" class="result-Q" placeholder="Set Q" />
+    <input  type="button" class="calc-e" value="Step 2" />
+    <div><p class="phi-result"></p></div>
+    <div><p class="e-result"></p></div>
     <input type="submit" value="Encrypt" />
   </form>
   <form class="form">
