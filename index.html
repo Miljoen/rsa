@@ -27,19 +27,20 @@
         <div><p class="phi-result"></p></div>
         <div><p class="result-E-label"></p></div>
         <div>
-            <input type="text" name="field4" class="result-E" disabled placeholder="E will be set here"/>
+            <input type="text" name="field4" class="result-E" disabled placeholder="Result of E"/>
             <textarea name="field4" class="result-M" placeholder="Set M"></textarea>
             <input type="button" class="calc-C" value="Encrypt"/>
             <div class="label-c"><p class="result-C-label"></p></div>
         </div>
     </form>
     <form class="form">
-        <h4>Decryption time!</h4>
-        <input type="text" name="field1" placeholder="Fill in E"/>
-        <input type="text" name="field2" placeholder="Fill in N"/>
-        <input type="text" name="field2" placeholder="Fill in P"/>
-        <input type="text" name="field2" placeholder="Fill in P"/>
-        <input type="submit" value="Decrypt"/>
+        <h4>For N & E calculate D</h4>
+        <input type="text" name="field6" class="decrypt-N" placeholder="Decrypt N"/>
+        <input type="text" name="field7" class="decrypt-E" placeholder="Decrypt E"/>
+        <input type="button" class="calc-D" value="Calculate"/>
+        <h4>Decrypt the message</h4>
+        <textarea name="field4" class="result-C" placeholder="Result of C"></textarea>
+        <input type="button" class="calc-M"value="Decrypt"/>
     </form>
 
 </div>
