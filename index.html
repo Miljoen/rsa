@@ -15,6 +15,7 @@
     <h1>Yoeri Moens & Rick van den Berg</h1>
     <form class="form">
         <div>
+            <h1>Encryption Steps</h1>
             <h4>For N calculate P & Q</h4>
             <input class="result-N inline-input" type="text" name="field1" placeholder="Fill in N"/>
             <input type="button" class="calc-pq inline-button" value="Step 1"/>
@@ -29,19 +30,21 @@
         <div>
             <input type="text" name="field4" class="result-E" disabled placeholder="Result of E"/>
             <textarea name="field4" class="result-M" placeholder="Set M"></textarea>
-            <input type="button" class="calc-C" value="Encrypt"/>
+            <input type="button" class="calc-C" value="Step 3 Encrypt"/>
             <div class="label-c"><p class="result-C-label"></p></div>
         </div>
     </form>
     <form class="form">
+        <h1>Decryption Steps</h1>
         <h4>For N & E calculate D</h4>
         <input type="text" name="field6" class="decrypt-N" placeholder="Decrypt N"/>
         <input type="text" name="field7" class="decrypt-E" placeholder="Decrypt E"/>
-        <input type="button" class="calc-D" value="Calculate"/>
+        <input type="button" class="calc-D" value="Step 1"/>
         <div class="label-d"><p class="result-D-label"></p></div>
         <h4>Decrypt the message</h4>
+        <input type="text" name="field8" class="result-D" disabled placeholder="Result of D"/>
         <textarea name="field4" class="result-C" placeholder="Result of C"></textarea>
-        <input type="button" class="calc-M"value="Decrypt"/>
+        <input type="button" class="calc-M"value="Step 2 Decrypt"/>
     </form>
 
 </div>
