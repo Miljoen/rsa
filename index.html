@@ -17,7 +17,7 @@
     <form class="form">
         <div>
             <h4>For N calculate P & Q</h4>
-            <input class="inline-input" type="text" name="field1" placeholder="Fill in N"/>
+            <input class="result-N inline-input" type="text" name="field1" placeholder="Fill in N"/>
             <input type="button" class="calc-pq inline-button" value="Step 1"/>
             <div><p class="p-and-q-result"></p></div>
         </div>
@@ -26,11 +26,12 @@
         <input type="text" name="field3" class="result-Q" placeholder="Set Q"/>
         <input type="button" class="calc-e" value="Step 2"/>
         <div><p class="phi-result"></p></div>
-        <div><p class="e-result"></p></div>
+        <div><p class="result-E-label"></p></div>
         <div>
             <input type="text" name="field4" class="result-E" disabled placeholder="E will be set here"/>
-            <textarea name="field4" class="result-m" placeholder="Set M"></textarea>
-            <input type="submit" value="Encrypt"/>
+            <textarea name="field4" class="result-M" placeholder="Set M"></textarea>
+            <input type="button" class="calc-C" value="Encrypt"/>
+            <div class="label-c"><p class="result-C-label"></p></div>
         </div>
     </form>
     <form class="form">

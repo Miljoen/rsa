@@ -67,3 +67,11 @@ display:inline-block;
   width: 45%;
   margin: 20px;
 }
+
+.label-c {
+  width: 200px;
+}
+
+.result-C-label {
+  text-overflow: inherit;
+}

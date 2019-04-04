@@ -80,9 +80,32 @@ step2.onclick = function() {
         }
     }
 
-    document.querySelector('.e-result').innerHTML = 'e is ' + e;
+    document.querySelector('.result-E-label').innerHTML = 'e is ' + e;
+    document.querySelector('.result-E').value = e.toString();
 };
 
+let encryptedMessageSpaced = '';
+let step3 = document.querySelector('.calc-C');
+step3.onclick = function() {
+    const mString = document.querySelector('.result-M').value;
+    const n = document.querySelector('.result-N').value;
+
+    let m = null;
+    let c = null;
+    let encryptedMessage = '';
+    for (let i = 0; i < mString.length; i++) {
+        let mCharacter = mString.charAt(i);
+        m = mCharacter.charCodeAt(0);
+
+        c = Math.pow(m, 7) % n;
+        encryptedMessage += c.toString();
+        encryptedMessageSpaced += ' ' + c.toString();
+    }
+
+    document.querySelector('.result-C-label').innerHTML = 'Message after encryption is: ' + encryptedMessage;
+
+
+};
 
 // let n = calculateN(17, 131);
 // console.log('n = ' + n);
