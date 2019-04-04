@@ -3,7 +3,6 @@ function calculateN(p, q) {
 }
 
 function calculatePhiOfN(p, q) {
-    console.log(p, q);
     return (p - 1) * (q - 1);
 }
 
@@ -75,7 +74,8 @@ function calculateD(phiOfN, e) {
 let step1 = document.querySelector('.calc-pq');
 step1.onclick = function() {
     const start = performance.now();
-    const pandQ = calculatePQ(parseInt(document.querySelector("input[name='field1']").value));
+    const n = parseInt(document.querySelector("input[name='field1']").value);
+    const pandQ = calculatePQ(n);
     const stop = performance.now();
     const time = stop - start;
 
@@ -83,6 +83,7 @@ step1.onclick = function() {
         'Amount of time busy finding p and q: ' + parseInt(time) + 'ms';
     document.querySelector('.result-P').value = pandQ[0];
     document.querySelector('.result-Q').value = pandQ[1];
+    document.querySelector('.decrypt-N').value = n;
 };
 
 let step2 = document.querySelector('.calc-e');
@@ -104,13 +105,14 @@ step2.onclick = function() {
 
     document.querySelector('.result-E-label').innerHTML = 'e is ' + e;
     document.querySelector('.result-E').value = e.toString();
+    document.querySelector('.decrypt-E').value = e.toString();
 };
 
-let encryptedMessageSpaced = '';
 let step3 = document.querySelector('.calc-C');
 step3.onclick = function() {
     const mString = document.querySelector('.result-M').value;
     const n = document.querySelector('.result-N').value;
+    const e = document.querySelector('.result-E').value;
 
     let m = null;
     let c = null;
@@ -119,12 +121,16 @@ step3.onclick = function() {
         let mCharacter = mString.charAt(i);
         m = mCharacter.charCodeAt(0);
 
-        c = Math.pow(m, 7) % n;
-        encryptedMessage += c.toString();
-        encryptedMessageSpaced += ' ' + c.toString();
+        c = Math.pow(m, e) % n;
+        if (i !== mString.length-1) {
+            encryptedMessage += c.toString() + ',';
+        } else {
+            encryptedMessage += c.toString();
+        }
     }
 
     document.querySelector('.result-C-label').innerHTML = 'Message after encryption is: ' + encryptedMessage;
+    document.querySelector('.result-C').value =     encryptedMessage;
 };
 
 let step4 = document.querySelector('.calc-D');
@@ -142,28 +148,34 @@ step4.onclick = function() {
     const d = calculateD(phiOfN, e);
 
     document.querySelector('.result-D-label').innerHTML = 'D is ' + d;
-}
+    document.querySelector('.result-D').value = d;
+};
 
-// let n = calculateN(17, 131);
-// console.log('n = ' + n);
+let step5 = document.querySelector('.calc-M');
+step5.onclick = function() {
+    const cStringArray = document.querySelector('.result-C').value.split(',');
+    const d = parseInt(document.querySelector('.result-D').value);
+    const n = document.querySelector('.decrypt-N').value;
 
-// const pandQ = calculatePQ(10);
-// console.log('Found! P = ' + pandQ[0] + ' AND Q = ' + pandQ[1]);
-//
-//
-// // Formula: M = C^d mod pq
-//
-// const p = pandQ[0];
-// const q = pandQ[1];
-// const e = 3;
-//
-// const phiOfN = (p - 1) * (q - 1);
-//
-// for(let k = 0; k < 100; k++) {
-//     d = (1 + (k * phiOfN)) / e;
-//
-//     if(Number.isInteger(d)) {
-//         console.log(d);
-//         k=100;
-//     }
-// }
+    const pandQ = calculatePQ(parseInt(n));
+
+    const p = pandQ[0];
+    const q = pandQ[1];
+
+    console.log(cStringArray);
+    cStringArray.forEach(function (c) {
+        c = parseInt(c);
+
+        let a = BigInt(1);
+        a = BigInt(Math.pow(c, d));
+        console.log(a, '===');
+        let b = p * q;
+        console.log(b);
+
+        let ccc = a % b;
+        console.log(ccc);
+
+        let m = (Math.pow(c, d)) % (p * q);
+        console.log(m);
+    });
+};
