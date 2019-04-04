@@ -2,13 +2,17 @@ function calculateN(p, q) {
     return p * q;
 }
 
+function calculatePhiOfN(p, q) {
+    console.log(p, q);
+    return (p - 1) * (q - 1);
+}
+
 function calculatePQ(n) {
     let randomPrime1 = randomPrime();
     let randomPrime2 = randomPrime();
     const pandQ = [2];
 
     while(randomPrime1 * randomPrime2 !== n) {
-        console.log('Brute force in action..');
         randomPrime1 = randomPrime();
         randomPrime2 = randomPrime();
         pandQ[0] = randomPrime1;
@@ -21,7 +25,6 @@ function calculatePQ(n) {
 function randomPrime() {
     let number = Math.floor(Math.random() * 254) + 2;
     while (!isPrimeNumber(number)) {
-        console.log(number + ' is not a prime number');
         number = Math.floor(Math.random() * 254) + 2;
     }
     return number;
@@ -49,7 +52,26 @@ function gcd_two_numbers(x, y) {
     return x;
 }
 
-// === TESTS ===
+function calculateD(phiOfN, e) {
+    let d = null;
+    let k = 2;
+
+    for(k; k < phiOfN; k++) {
+        d = (1 + (k * phiOfN)) / e;
+
+        if (Number.isInteger(d)) {
+            break;
+        }
+    }
+
+    if (k === phiOfN) {
+        return 0;
+    }
+
+    return d;
+}
+
+// ========================================================= TESTS =============================================
 let step1 = document.querySelector('.calc-pq');
 step1.onclick = function() {
     const start = performance.now();
@@ -68,15 +90,15 @@ step2.onclick = function() {
     const p = document.querySelector('.result-P').value;
     const q = document.querySelector('.result-Q').value;
 
-    const n = p * q;
-    const phiOfN = (p - 1) * (q - 1);
+    const n = calculateN(p, q);
+    const phiOfN = calculatePhiOfN(p, q);
     document.querySelector('.phi-result').innerHTML = 'n is ' + n + '<br>' + 'Phi(n) is ' + phiOfN;
 
     let e = 0;
     for (x = 2; x < phiOfN; x++) {
         if (gcd_two_numbers(x, phiOfN) === 1) {
             e = x;
-            x = phiOfN;
+            break;
         }
     }
 
@@ -103,9 +125,24 @@ step3.onclick = function() {
     }
 
     document.querySelector('.result-C-label').innerHTML = 'Message after encryption is: ' + encryptedMessage;
-
-
 };
+
+let step4 = document.querySelector('.calc-D');
+step4.onclick = function() {
+    const n = document.querySelector('.decrypt-N').value;
+    const e = document.querySelector('.decrypt-E').value;
+
+    const pandQ = calculatePQ(parseInt(n));
+
+    const p = pandQ[0];
+    const q = pandQ[1];
+
+    const phiOfN = calculatePhiOfN(p, q);
+
+    const d = calculateD(phiOfN, e);
+
+    document.querySelector('.result-D-label').innerHTML = 'D is ' + d;
+}
 
 // let n = calculateN(17, 131);
 // console.log('n = ' + n);
