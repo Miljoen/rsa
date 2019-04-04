@@ -2,43 +2,45 @@
 
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+    <meta charset="utf-8">
 
-  <title>Pa3</title>
-  <link rel="stylesheet" href="style.css">
+    <title>Pa3</title>
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 <div class="form-style">
-  <h1>Encrypt/Decrypt PA3</h1>
-  <h1>Yoeri Moens & Rick van den Berg</h1>
+    <h1>Encrypt/Decrypt PA3</h1>
+    <h1>Yoeri Moens & Rick van den Berg</h1>
 
-  <form class="form">
-    <div>
-      <h4>For N calculate P & Q</h4>
-      <input class="inline-input" type="text" name="field1" placeholder="Fill in N" />
-      <input type="button" class="calc-pq inline-button" value="Step 1"/>
-      <div><p class="p-and-q-result"></p></div>
-    </div>
-    <h4>Or set P & Q to calculate E</h4>
-    <input type="text" name="field2" class="result-P" placeholder="Set P" />
-    <input type="text" name="field2" class="result-Q" placeholder="Set Q" />
-    <input  type="button" class="calc-e" value="Step 2" />
-    <div><p class="phi-result"></p></div>
-    <div><p class="e-result"></p></div>
+    <form class="form">
+        <div>
+            <h4>For N calculate P & Q</h4>
+            <input class="inline-input" type="text" name="field1" placeholder="Fill in N"/>
+            <input type="button" class="calc-pq inline-button" value="Step 1"/>
+            <div><p class="p-and-q-result"></p></div>
+        </div>
+        <h4>Or set P & Q to calculate E</h4>
+        <input type="text" name="field2" class="result-P" placeholder="Set P"/>
+        <input type="text" name="field3" class="result-Q" placeholder="Set Q"/>
+        <input type="button" class="calc-e" value="Step 2"/>
+        <div><p class="phi-result"></p></div>
+        <div><p class="e-result"></p></div>
+        <div>
+            <input type="text" name="field4" class="result-E" disabled placeholder="E will be set here"/>
+            <textarea name="field4" class="result-m" placeholder="Set M"></textarea>
+            <input type="submit" value="Encrypt"/>
+        </div>
+    </form>
+    <form class="form">
 
-    <textarea type="text" name="field2" class="result-m" placeholder="Set M"></textarea>
-    <input type="submit" value="Encrypt" />
-  </form>
-  <form class="form">
-
-    <input type="text" name="field1" placeholder="Fill in E" />
-    <input type="text" name="field2" placeholder="Fill in N" />
-    <input type="text" name="field2" placeholder="Fill in P" />
-    <input type="text" name="field2" placeholder="Fill in P" />
-    <input type="submit" value="Decrypt" />
-  </form>
+        <input type="text" name="field1" placeholder="Fill in E"/>
+        <input type="text" name="field2" placeholder="Fill in N"/>
+        <input type="text" name="field2" placeholder="Fill in P"/>
+        <input type="text" name="field2" placeholder="Fill in P"/>
+        <input type="submit" value="Decrypt"/>
+    </form>
 
 </div>
 <script src="app.js"></script>

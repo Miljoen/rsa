@@ -32,6 +32,7 @@
   padding: 3%;
   color: #555;
   font: 95% Arial, Helvetica, sans-serif;
+  vertical-align: middle;
 }
 .form-style input[type="text"]:focus,
 .form-style textarea:focus,
@@ -40,6 +41,7 @@
   box-shadow: 0 0 5px #43D1AF;
   padding: 3%;
   border: 1px solid #43D1AF;
+
 }
 
 .form-style input[type="submit"],
