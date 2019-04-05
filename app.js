@@ -160,10 +160,14 @@ step5.onclick = function() {
     const p = BigInt(pandQ[0]);
     const q = BigInt(pandQ[1]);
 
+    let decryptedString = '';
     cStringArray.forEach(function (c) {
         c = BigInt(c);
         let m = BigInt(0);
         m = (c**d)%(p * q);
-        console.log(m);
+        let decryptedCharacter = String.fromCharCode(parseInt(m));
+        decryptedString += decryptedCharacter;
     });
+
+    document.querySelector('.result-M-label').innerHTML = 'Message after decryption is: ' + decryptedString;
 };

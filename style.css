@@ -68,11 +68,11 @@ display:inline-block;
   vertical-align: top;
 }
 
-.label-c {
+.label {
   width: 200px;
 }
 
-.result-C-label {
+.result-label {
   width: 400px;
   overflow-y: auto;
   overflow-wrap: break-word;
