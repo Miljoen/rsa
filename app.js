@@ -73,8 +73,8 @@ function calculateD(phiOfN, e) {
 // ========================================================= TESTS =============================================
 let step1 = document.querySelector('.calc-pq');
 step1.onclick = function() {
-    const start = performance.now();
     const n = parseInt(document.querySelector("input[name='field1']").value);
+    const start = performance.now();
     const pandQ = calculatePQ(n);
     const stop = performance.now();
     const time = stop - start;
@@ -95,13 +95,23 @@ step2.onclick = function() {
     const phiOfN = calculatePhiOfN(p, q);
     document.querySelector('.phi-result').innerHTML = 'n is ' + n + '<br>' + 'Phi(n) is ' + phiOfN;
 
-    let e = 0;
+    let e = [];
     for (x = 2; x < phiOfN; x++) {
         if (gcd_two_numbers(x, phiOfN) === 1) {
-            e = x;
-            break;
+            e.push(x);
         }
     }
+
+    let selectE = document.querySelector(".select-E");
+    for(let i = 0; i < e.length; i++) {
+        let opt = e[i];
+        let el = document.createElement("option");
+        el.textContent = opt;
+        el.value = opt;
+        selectE.appendChild(el);
+    }
+
+    e = e[0];
 
     document.querySelector('.result-E-label').innerHTML = 'e is ' + e;
     document.querySelector('.result-E').value = e.toString();
