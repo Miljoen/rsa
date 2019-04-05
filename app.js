@@ -154,33 +154,16 @@ step4.onclick = function() {
 let step5 = document.querySelector('.calc-M');
 step5.onclick = function() {
     const cStringArray = document.querySelector('.result-C').value.split(',');
-    const d = parseInt(document.querySelector('.result-D').value);
+    const d = BigInt(document.querySelector('.result-D').value);
     const n = document.querySelector('.decrypt-N').value;
-
     const pandQ = calculatePQ(parseInt(n));
+    const p = BigInt(pandQ[0]);
+    const q = BigInt(pandQ[1]);
 
-    const p = pandQ[0];
-    const q = pandQ[1];
-
-    console.log(cStringArray);
     cStringArray.forEach(function (c) {
         c = BigInt(c);
-
-        for (let x = 0; x < d; x++) {
-            c = c * c;
-        }
-        console.log(c);
-
-
-        a = BigInt(Math.pow(c, d));
-        console.log(a, '===');
-        let b = p * q;
-        console.log(b);
-
-        let ccc = a % b;
-        console.log(ccc);
-
-        let m = (Math.pow(c, d)) % (p * q);
+        let m = BigInt(0);
+        m = (c**d)%(p * q);
         console.log(m);
     });
 };
